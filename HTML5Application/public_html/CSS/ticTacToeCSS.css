@@ -1,0 +1,17 @@
+/*
+Adding styles to the Tic Tac Toe game.
+*/
+/* 
+    Created on : Feb 12, 2018, 9:54:31 PM
+    Author     : lVl4rl2LoN
+*/
+
+.Square{
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    font-size: 18pt;
+    font-weight: bold;
+    font-family: Verdana;
+    
+}
