@@ -4,7 +4,17 @@
 
 
 function startGame(){
+    
+    for(var i = 1; i <=9; i = i+1){
+        clearBox(i);
+    }
+    
     document.turn = "X";
+    //Math.random returns a value between 0 and 1
+    if(Math.random()<0.5){
+        document.turn = "O";
+    }
+    document.winner = null;
     setMessage(document.turn + " gets to start.");
 }
 
@@ -13,7 +23,10 @@ function setMessage(msg){
 }
 
 function nextMove(square){
-    if(square.innerText ===""){
+    if(document.winner !== null){
+        setMessage(document.winner + " already won the game.");
+    }
+    else if(square.innerText ===""){
         square.innerText = document.turn;
         switchTurn();
     }
@@ -25,6 +38,7 @@ function nextMove(square){
 function switchTurn(){
     if(checkForWinner(document.turn)){
         setMessage("Congratulations, " +document.turn+"! You win!");
+        document.winner = document.turn;
     }
     else if(document.turn ==="X"){
         document.turn = "O";
@@ -63,4 +77,8 @@ function checkRow(a,b,c,move){
 
 function getBox(number){
     return document.getElementById("s"+number).innerText;
+}
+
+function clearBox(number){
+    document.getElementById("s"+number).innerText = "";
 }
