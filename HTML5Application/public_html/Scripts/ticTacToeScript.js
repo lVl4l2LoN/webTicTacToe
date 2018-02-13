@@ -9,10 +9,14 @@ function startGame(){
         clearBox(i);
     }
     
+    
     document.turn = "X";
+    //setPlayerColor();
+    
     //Math.random returns a value between 0 and 1
     if(Math.random()<0.5){
         document.turn = "O";
+        //setPlayerColor();
     }
     document.winner = null;
     setMessage(document.turn + " gets to start.");
@@ -37,15 +41,19 @@ function nextMove(square){
 
 function switchTurn(){
     if(checkForWinner(document.turn)){
+        setPlayerColor();
         setMessage("Congratulations, " +document.turn+"! You win!");
         document.winner = document.turn;
     }
     else if(document.turn ==="X"){
-        document.turn = "O";
+        document.turn = "O"; 
+        setPlayerColor();
         setMessage("It's "+document.turn + " turn!");
     }
+    
     else{
-        document.turn = "X";
+        document.turn = "X";   
+        setPlayerColor();
         setMessage("It's "+document.turn + " turn!");
     }
     
@@ -81,4 +89,16 @@ function getBox(number){
 
 function clearBox(number){
     document.getElementById("s"+number).innerText = "";
+}
+
+//This function switches the X player font to red and the O player font to blue
+function setPlayerColor(){
+    for(var i = 1; i <=9; i = i+1){
+        if(document.getElementById("s"+i).innerText==="X"){
+            document.getElementById("s"+i).style.color = "red";
+        }
+        else{
+            document.getElementById("s"+i).style.color = "blue";
+        }
+    }
 }
