@@ -67,7 +67,7 @@ function checkForWinner(move){
        checkRow(1,4,7,move)|| //checks columns
        checkRow(2,5,8,move)||
        checkRow(3,6,9,move)||
-       checkRow(1,5,9,move)||
+       checkRow(1,5,9,move)|| //check diagonals
        checkRow(3,5,7,move)){
        result = true;
     }
